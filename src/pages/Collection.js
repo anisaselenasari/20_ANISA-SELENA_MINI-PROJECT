@@ -6,6 +6,7 @@ import tunik from '../assets/img/tunik.png'
 import tops from '../assets/img/tops.png'
 import outher from '../assets/img/outher.png'
 import celana from '../assets/img/celana.png'
+// import '../assets/css/collection.css'
 
 function Collection() {
     return (
@@ -13,22 +14,39 @@ function Collection() {
     <Navbar />
       <div id="my-content">
       <div className="header-body d-flex justify-content-center ">
-        <div className="container mt-1">
-          <div className="row mb-5"></div>
-        </div>
-        <div className="row">
+      {/* <div className="container mt-1">
+      </div> */}
+
+        <div className="container row" >
         <div className="col-md-6 ">
-              <img className="my-img" src={foto} alt="profile-pic justify-content-center" />
-            </div>
-            <div className="col-md-6">
-            Your place to find perfect everyday shirt! Selling since 2009, we are totally trusted!!!
+        <div className="container"></div> 
+        Your place to find perfect everyday shirt! Selling since 2009, we are totally trusted!!!
+        <div className="container"></div>
+            <br></br>
+            
+            Sekarang kamu bisa belanja shirt dari House of Selendang dimanapun dan kapanpun.
+            <div className="container"></div>
+            <br></br>
 
-Sekarang kamu bisa belanja shirt dari House of Selendang dimanapun dan kapanpun. Cek katalog terbaru kami dan langsunsung check out.
-
-Happy Shopping Shopadict
+            Cek katalog terbaru kami dan langsung check out.
+            <div className="container"></div>
+            <br></br>
+            Happy Shopping Shopadict
               </div>
-              <div className="container">
-              {/* <div className="row"> */}
+              
+
+            <div className="col-md-6">
+            <img 
+              className="my-gambar" 
+              src={foto} 
+              alt="profile-pic justify-content-center" 
+              />
+            </div>
+           
+            </div>
+        </div>
+
+              <div className="container row">
               <div className="col-md-3 ">  
               <NavLink
                 exact
@@ -37,9 +55,12 @@ Happy Shopping Shopadict
                 activeClassName="my-active"
                 aria-current="page"
               >
-                  <img className="my-img" src={tunik} alt="profile-pic justify-content-center" />
+                  <img 
+                  className="my-img1" 
+                  src={tunik} 
+                  alt="profile-pic justify-content-center" />
               </NavLink> 
-              
+              </div>
               <div className="col-md-3 ">  
               <NavLink
                 exact
@@ -48,8 +69,12 @@ Happy Shopping Shopadict
                 activeClassName="my-active"
                 aria-current="page"
               > 
-              <img className="my-img" src={tops} alt="profile-pic justify-content-center" />
+              <img 
+              className="my-img2" 
+              src={tops} 
+              alt="profile-pic justify-content-center" />
               </NavLink> 
+              </div>
 
               <div className="col-md-3 ">   
               <NavLink
@@ -59,9 +84,12 @@ Happy Shopping Shopadict
                 activeClassName="my-active"
                 aria-current="page"
               >
-                   <img className="my-img" src={outher} alt="profile-pic justify-content-center" />
+                   <img 
+                   className="my-img3" 
+                   src={outher} 
+                   alt="profile-pic justify-content-center" />
                </NavLink> 
-             
+               </div>
               <div className="col-md-3 ">   
               <NavLink
                 exact
@@ -70,18 +98,17 @@ Happy Shopping Shopadict
                 activeClassName="my-active"
                 aria-current="page"
               >
-              <img className="my-img" src={celana} alt="profile-pic justify-content-center" />
+              <img 
+              className="my-img4" 
+              src={celana} 
+              alt="profile-pic justify-content-center" />
               </NavLink> 
               </div>
               </div>
         </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        // </div>
+    </div>
+
+
     )
 }
 

@@ -1,9 +1,9 @@
-.model{
-    position: absolute;
-    width: 1112.1px;
+
+.my-img {
+    /* position: absolute; */
     height: 599px;
     left: 164px;
     top: 145px;
+   position: center;
     
-    background: #FFFFFF;
 }
