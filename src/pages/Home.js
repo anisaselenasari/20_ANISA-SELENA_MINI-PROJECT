@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from './NavbarHome'
-// import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import model from '../assets/img/Foto layar utama.png'
 import '../assets/css/home.css'
 import footer from '../assets/img/Component 13.png'
@@ -21,7 +21,7 @@ function Home() {
             </div>
             <div className="col-md-4">
               </div>
-            <div className="my-img" src={footer} alt="profile-pic justify-content-center"/>
+            <div className="my-img2" src={footer} alt="profile-pic justify-content-center"/>
             </div>
           </div>
         </div>
