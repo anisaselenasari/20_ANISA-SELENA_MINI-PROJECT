@@ -20,15 +20,18 @@ import './App.css';
 import Home from './pages/Home';
 import NavbarHome from './pages/NavbarHome';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import './assets/css/navbar.css'
+import "bootstrap/dist/css/bootstrap.css"
+import Collection from './pages/Collection';
 
 
 function App() {
   return (
  <BrowserRouter>
   <Switch>
-    <Route exact path="/" component={NavbarHome} />
-    <Route exact path="/Home" component={Home} />
+    
+    <Route exact path="/home" component={Home} />
+    <Route exact path="/home" component={NavbarHome} />
+    <Route exact path="/Collection" component={Collection} />
     <Route />
     </Switch>
  </BrowserRouter>

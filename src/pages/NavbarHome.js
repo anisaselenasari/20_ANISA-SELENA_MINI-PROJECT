@@ -85,8 +85,15 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import logo from '../assets/img/Logo.png'
 import { Badge } from '@material-ui/core';
-import { Search, ShoppingCartOutlined } from '@material-ui/icons'
+import {  ShoppingCartOutlined } from '@material-ui/icons'
 import '../assets/css/navbar.css'
+import styled from 'styled-components'
+
+
+const ul=styled.div`
+    background-color : #FFDAC1;
+    `
+
 
 function NavbarHome() {
     return (
@@ -110,11 +117,12 @@ function NavbarHome() {
         </button>
         <div className="collapse navbar-collapse" id="navbarContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-          <ul className="navbar-nav d-flex align-items-center">
+          <ul className ="navbar-nav d-flex align-items-center">
+          {/* <ul className style={{color:'#FFDAC1'}}></ul>   tadinya buat nampilin background warna */}
             <li className="nav-item px-2 ">
               <NavLink
                 exact
-                to="/"
+                to="/home"
                 className="nav-link"
                 activeClassName="my-active"
                 aria-current="page"
@@ -123,14 +131,16 @@ function NavbarHome() {
               </NavLink>
             </li>
             <li className="nav-item px-2">
-              <NavLink exact to="/" className="nav-link" aria-current="page">
+              <NavLink exact to="/Collection" 
+              className="nav-link" 
+              aria-current="page">
                 COLLECTION
               </NavLink>
             </li>
             <li className="nav-item px-2">
               <NavLink
                 exact
-                to="/"
+                to="/Login"
                 className="nav-link"
                 activeClassName="my-active"
                 aria-current="page"

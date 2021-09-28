@@ -7,6 +7,18 @@
 cursor: pointer;
 margin-left: 25px;
 }
+.img {
+    position: absolute;
+width: 479px;
+height: 104px;
+left: 0px;
+top: 0px;
+
+}
+
+.bootstrap {
+    background-color: #FFDAC1;
+}
 
 
 /* const Wrapper = styled.div`
