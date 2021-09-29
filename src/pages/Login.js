@@ -15,6 +15,7 @@ function Login() {
                     
                     
                     <form className="data-container col-md-7 col-sm-8">
+                    <div className="container"></div>
                     <h2>LOGIN TO CONTINUE</h2>
                     <div className="container">
                     <div className="mb-3">
