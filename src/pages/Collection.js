@@ -6,7 +6,8 @@ import tunik from '../assets/img/tunik.png'
 import tops from '../assets/img/tops.png'
 import outher from '../assets/img/outher.png'
 import celana from '../assets/img/celana.png'
-// import '../assets/css/collection.css'
+import '../assets/css/collection.css'
+import Footer from '../component/Footer'
 
 function Collection() {
     return (
@@ -14,12 +15,12 @@ function Collection() {
     <Navbar />
       <div id="my-content">
       <div className="header-body d-flex justify-content-center ">
-      {/* <div className="container mt-1">
-      </div> */}
+      
 
         <div className="container row" >
         <div className="col-md-6 ">
         <div className="container"></div> 
+        <p>
         Your place to find perfect everyday shirt! Selling since 2009, we are totally trusted!!!
         <div className="container"></div>
             <br></br>
@@ -32,6 +33,7 @@ function Collection() {
             <div className="container"></div>
             <br></br>
             Happy Shopping Shopadict
+            </p>
               </div>
               
 
@@ -50,7 +52,7 @@ function Collection() {
               <div className="col-md-3 ">  
               <NavLink
                 exact
-                to=""
+                to="/Baju"
                 className="nav-link"
                 activeClassName="my-active"
                 aria-current="page"
@@ -60,6 +62,8 @@ function Collection() {
                   src={tunik} 
                   alt="profile-pic justify-content-center" />
               </NavLink> 
+
+
               </div>
               <div className="col-md-3 ">  
               <NavLink
@@ -106,7 +110,9 @@ function Collection() {
               </div>
               </div>
         </div>
+        <Footer/>
     </div>
+    
 
 
     )
