@@ -8,6 +8,7 @@ import Collection from './pages/Collection';
 import Baju from './pages/Baju';
 import Footer from './component/Footer';
 import DetailBaju from './pages/DetailBaju';
+import Login from './pages/Login';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
     <Route exact path="/Collection" component={Collection} />
     <Route exact path="/Baju" component={Baju} />
     <Route exact path="/DetailBaju" component={DetailBaju} />
+    <Route exact path="/Login" component={Login} />
     <Route exact path="/" component={Footer} />
     <Route />
     </Switch>

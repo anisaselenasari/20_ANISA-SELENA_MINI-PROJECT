@@ -66,6 +66,24 @@ export default function DetailBaju() {
                     </button>
       </CardContent>
       </NavLink> 
+      
+      <div className="review">
+      <form>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Username</label>
+    <input type="email" class="form-control" id="exampleInputEmail1"></input>
+    
+  </div>
+  
+  <div class="mb-3">
+  <div class="form-floating">
+  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style={{height: "100px"}}></textarea>
+  <label for="floatingTextarea2">Pesan Untukku</label>
+</div>
+</div>
+  <button type="submit" style={{background: "#DCAB92"}} className="btn btn-primary">Submit</button>
+</form>
+      </div>
       </div>
       </div>
       </div>

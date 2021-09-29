@@ -16,21 +16,47 @@ function Baju() {
       <div className="text-center">
             <div className="row">
               <div className="col-md-6 ml-5" >   
-              <img className="my-baju1" src={baju1Img}  className="img-fluid"  className="rounded float-start" alt="profile-pic justify-content-center"/>
+              <NavLink
+                exact
+                to="/DetailBaju"
+                className="nav-link"
+                activeClassName="my-active"
+                aria-current="page"
+              > 
+              <img 
+              className="my-baju1" 
+              src={baju1Img}  
+              className="img-fluid"  
+              className="rounded float-start" 
+              alt="profile-pic justify-content-center"/>
               <p>
               ARZENA SHIRT
               <br></br>
               RP. 139.000
               </p>
+              </NavLink>
               </div>
 
              <div className="col-md-6 ml-5" >
-              <img className="my-baju2" src={baju2Img}  className="img-fluid"  className="rounded float-end" alt="profile-pic justify-content-center"/>
+             <NavLink
+                exact
+                to="/DetailBaju"
+                className="nav-link"
+                activeClassName="my-active"
+                aria-current="page"
+              > 
+              <img 
+              className="my-baju2" 
+              src={baju2Img}  
+              className="img-fluid"  
+              className="rounded float-end" 
+              alt="profile-pic justify-content-center"/>
               <p>
               ALISYAH TUNIK
               <br></br>
               RP. 129.000
                   </p>
+                  </NavLink>
               </div>
               </div>
          </div>

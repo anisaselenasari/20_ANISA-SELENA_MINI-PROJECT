@@ -1,0 +1,16 @@
+.h2{
+    text-align: center;
+}
+
+.button {
+    position: absolute;
+width: 616px;
+height: 89px;
+left: -268px;
+top: -26px;
+}
+
+.modelloginImg {
+    width: 100px;
+    height: 100px;
+}

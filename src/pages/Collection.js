@@ -19,6 +19,9 @@ function Collection() {
 
         <div className="container row" >
         <div className="col-md-6 ">
+          <br></br>
+          <br></br>
+          <br></br>
         <div className="container"></div> 
         <p>
         Your place to find perfect everyday shirt! Selling since 2009, we are totally trusted!!!
@@ -68,7 +71,7 @@ function Collection() {
               <div className="col-md-3 ">  
               <NavLink
                 exact
-                to=""
+                to="/Baju"
                 className="nav-link"
                 activeClassName="my-active"
                 aria-current="page"
@@ -83,7 +86,7 @@ function Collection() {
               <div className="col-md-3 ">   
               <NavLink
                 exact
-                to=""
+                to="/Baju"
                 className="nav-link"
                 activeClassName="my-active"
                 aria-current="page"
@@ -97,7 +100,7 @@ function Collection() {
               <div className="col-md-3 ">   
               <NavLink
                 exact
-                to=""
+                to="/Baju"
                 className="nav-link"
                 activeClassName="my-active"
                 aria-current="page"
