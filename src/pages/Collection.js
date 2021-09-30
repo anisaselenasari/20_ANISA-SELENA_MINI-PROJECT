@@ -70,6 +70,7 @@ function Collection() {
                   className="my-img1" 
                   src={tunik} 
                   alt="profile-pic justify-content-center" />
+                  <h6 style={{color: "black", textAlign: "center"}}>TUNIK </h6>
               </NavLink> 
               </div>
 
@@ -86,6 +87,7 @@ function Collection() {
               className="my-img2" 
               src={tops} 
               alt="profile-pic justify-content-center" />
+              <h6 style={{color: "black", textAlign: "center"}}>TOPS </h6>
               </NavLink> 
               </div>
 
@@ -101,7 +103,9 @@ function Collection() {
                    className="my-img3" 
                    src={outher} 
                    alt="profile-pic justify-content-center" />
+                   <h6 style={{color: "black", textAlign: "center"}}>OUTHER </h6>
                </NavLink> 
+
                </div>
               <div className="col-md-3 ">   
               <NavLink
@@ -115,6 +119,7 @@ function Collection() {
               className="my-img4" 
               src={celana} 
               alt="profile-pic justify-content-center" />
+              <h6 style={{color: "black", textAlign: "center"}}>BUTTOMS </h6>
               </NavLink> 
               </div>
               </div>

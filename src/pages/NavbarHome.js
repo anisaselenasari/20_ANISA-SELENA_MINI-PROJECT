@@ -122,7 +122,7 @@ function NavbarHome() {
             <li className="nav-item px-2 ">
               <NavLink
                 exact
-                to="/home"
+                to="/"
                 className="nav-link"
                 activeClassName="my-active"
                 aria-current="page"

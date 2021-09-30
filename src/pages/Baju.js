@@ -50,8 +50,8 @@ function Baju() {
               // className="rounded float-start" 
               alt="profile-pic justify-content-center"/>
               <h5 style={{color: "black"}}>{elementProduk.nama}</h5>
-              <h5>{elementProduk.harga}</h5>
-              
+              <h5 style={{color: "black"}}>{elementProduk.harga}</h5>
+              <p>{elementProduk.Date}</p>
               </NavLink>
               </div>
             ))}

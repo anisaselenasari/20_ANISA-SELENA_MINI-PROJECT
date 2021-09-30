@@ -6,30 +6,56 @@ import detailBajuImg from '../assets/img/baju1.png'
 import { Badge } from '@material-ui/core';
 import {  ShoppingCartOutlined } from '@material-ui/icons'
 import CardContent from "@material-ui/core/CardContent";
+import { gql, useQuery} from '@apollo/client';
 
 export default function DetailBaju() {
+  const GetTodo = gql`
+  query MyQuery {
+    Produk {
+      nama
+      gambar
+      harga
+      is_ready
+      deskripsi_Produk
+      id
+      id_Kategori
+      Date
+    }
+  }  
+  `
+  const { data, loading, error } = useQuery(GetTodo);
+  console.log(data);
     return (
         <div>
+           
              <Navbar />
       <div id="my-content">
       <div className="header-body d-flex justify-content-center ">
       <div className="container mt-1">
           <div className="row mb-5">
 
+          {data?.Produk.map((elementProduk)=>(
         <div className="row">
         <div className="col-md-6" > 
       <figure className="figure">
-    <img src={detailBajuImg} className="img-fluid" className="figure-img img-fluid rounded" alt="profile-pic justify-content-center"/>
-    <figcaption className="figure-caption"> <h3>ARZENA SHIRT 
+    <img 
+    src={elementProduk.gambar} 
+    className="img-fluid" 
+    className="figure-img img-fluid rounded" 
+    alt="profile-pic justify-content-center"/>
+    <figcaption className="figure-caption"> 
+    <h3>{elementProduk.nama} 
         <br></br>
-        RP. 139.000 </h3></figcaption>
+        {elementProduk.harga} </h3></figcaption>
     </figure>
       </div>
       <div className="col-md-6" > 
       <div className="container">
       <br></br>
       <br></br>
-      <p>
+      <p>{elementProduk.deskripsi_Produk} </p>
+      
+      {/* <p>
       Arzena shirt merupakan jenis blouse yang casual look. Dengan detail cuttingan bagian leher turtle, 
       lengan bercutting loose dan sedikit oversize pada bagian dada. </p>
       
@@ -46,7 +72,7 @@ export default function DetailBaju() {
         dengan LD 122 cm
         <br></br>
         Berat : 350g
-    </p>
+    </p> */}
       </div>
       <NavLink
                 exact
@@ -66,7 +92,9 @@ export default function DetailBaju() {
                     </button>
       </CardContent>
       </NavLink> 
-      
+      </div>
+        </div>
+      ))}
       <div className="review">
       <form>
   <div class="mb-3">
@@ -86,8 +114,7 @@ export default function DetailBaju() {
       </div>
       </div>
       </div>
-      </div>
-        </div>
+      
         </div>
         </div>
         <Footer/>
