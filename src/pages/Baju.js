@@ -5,9 +5,27 @@ import baju1Img from '../assets/img/baju1.png'
 import baju2Img from '../assets/img/baju2.png'
 import '../assets/css/baju.css'
 import Footer from '../component/Footer'
+import { gql, useQuery} from '@apollo/client';
 
 
 function Baju() {
+
+  const GetTodo = gql`
+  query MyQuery {
+    Produk {
+      nama
+      gambar
+      harga
+      is_ready
+      deskripsi_Produk
+      id
+      id_Kategori
+      Date
+    }
+  }  
+  `
+  const { data, loading, error } = useQuery(GetTodo);
+  console.log(data);
     return (
         <div>
              <Navbar />
@@ -15,6 +33,8 @@ function Baju() {
       <div className="header-body d-flex justify-content-center ">
       <div className="text-center">
             <div className="row">
+
+            {data?.Produk.map((elementProduk)=>(
               <div className="col-md-6 ml-5" >   
               <NavLink
                 exact
@@ -23,21 +43,20 @@ function Baju() {
                 activeClassName="my-active"
                 aria-current="page"
               > 
-              <img 
+              <img style={{width: "400px", height:"600.39px" , left: "46px", top: "186px" }}
               className="my-baju1" 
-              src={baju1Img}  
+              src={elementProduk.gambar}  
               className="img-fluid"  
-              className="rounded float-start" 
+              // className="rounded float-start" 
               alt="profile-pic justify-content-center"/>
-              <p>
-              ARZENA SHIRT
-              <br></br>
-              RP. 139.000
-              </p>
+              <h5 style={{color: "black"}}>{elementProduk.nama}</h5>
+              <h5>{elementProduk.harga}</h5>
+              
               </NavLink>
               </div>
-
-             <div className="col-md-6 ml-5" >
+            ))}
+            
+             {/* <div className="col-md-6 ml-5" >
              <NavLink
                 exact
                 to="/DetailBaju"
@@ -57,7 +76,7 @@ function Baju() {
               RP. 129.000
                   </p>
                   </NavLink>
-              </div>
+              </div> */}
               </div>
          </div>
       </div>

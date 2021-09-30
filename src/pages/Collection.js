@@ -8,29 +8,12 @@ import outher from '../assets/img/outher.png'
 import celana from '../assets/img/celana.png'
 import '../assets/css/collection.css'
 import Footer from '../component/Footer'
-import { gql, useQuery} from '@apollo/client';
+
 
 
 
 function Collection() {
 
-  const GetTodo = gql`
-  query MyQuery {
-    Produk {
-      nama
-      gambar
-      harga
-      is_ready
-      deskripsi_Produk
-      id
-      id_Kategori
-      Date
-    }
-  }  
-  `
-  const { data, loading, error } = useQuery(GetTodo);
-  console.log(data, loading, error);
-  
     return (
         <div>
     <Navbar />
@@ -73,8 +56,10 @@ function Collection() {
         </div>
 
               <div className="container row">
-              <div className="col-md-3 ">  
-              <NavLink
+               
+             
+                <div className="col-md-3 ">  
+                <NavLink
                 exact
                 to="/Baju"
                 className="nav-link"
@@ -86,9 +71,9 @@ function Collection() {
                   src={tunik} 
                   alt="profile-pic justify-content-center" />
               </NavLink> 
-
-
               </div>
+
+             
               <div className="col-md-3 ">  
               <NavLink
                 exact
