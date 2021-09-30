@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-
+import { changed, reset, touched, findAllInvalid } from '../store/contact'
 import { useHistory } from 'react-router-dom'
 import modelLoginImg from '../assets/img/modellogin.png'
 import '../assets/css/login.css'
