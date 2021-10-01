@@ -100,7 +100,6 @@ function NavbarHome() {
      
 
         <nav className="navbar navbar-expand-lg navbar-light"  style={{backgroundColor: "#FFDAC1"}}>
-        {/* style={{background-color: "FFDAC1"}}> */}
       <div className="container-fluid">
         <NavLink className="navbar-brand" to="/">
         <img src={logo} alt="logo " />
@@ -119,7 +118,7 @@ function NavbarHome() {
         <div className="collapse navbar-collapse" id="navbarContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
           <ul className ="navbar-nav d-flex align-items-center">
-          {/* <ul className style={{color:'#FFDAC1'}}></ul>   tadinya buat nampilin background warna */}
+          
             <li className="nav-item px-2 ">
               <NavLink
                 exact
@@ -149,7 +148,7 @@ function NavbarHome() {
                 LOGIN
               </NavLink>
             </li>
-            <Badge  color = "primary"> 
+            <Badge > 
                <ShoppingCartOutlined/>
                     </Badge>
           </ul>

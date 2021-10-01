@@ -7,11 +7,12 @@ import '../assets/css/baju.css'
 import Footer from '../component/Footer'
 import { gql, useQuery, useLazyQuery} from '@apollo/client';
 import { useEffect } from 'react'
+import LoadingSvg from '../component/LoadingSvg'
 
 
 function Baju(props) {
-  console.log("ini props baju = ", props.match.params.collection);
-// baris 11 kita masukin props itu karna biar dia kepanggil atau muncul , ketika kita klik bagian collection.js baris ke 65. 
+  console.log("ini props baju = ", props.match.params.Collection);
+// baris 13 kita masukin props itu karna biar dia kepanggil atau muncul , ketika kita klik bagian collection.js baris ke 65. 
 
   const GetTodo = gql`
   query MyQuery {
@@ -56,20 +57,27 @@ function Baju(props) {
   const [getShirt, { data, loading, error }] = useLazyQuery(GetShirt);
   console.log(data);
 
-
+  
   useEffect (()=>{
-
-    getShirt({variables : {id_Kategori: props.match.params.collection}}
+    getShirt({variables : {id_Kategori: props.match.params.Collection}});
+    console.log("saya masuk ke get shirt");
   }, [])
 
   const clickImg = (elementImg) => {
-    console.log("klikgambar")
+    console.log("klik gambar")
+  };
+  {
+    console.log("sebelum masuk return")
   }
 
-  
+  if (loading){
+    return <LoadingSvg />
+   }
+
   
     return (
         <div>
+          {console.log("masuk return")}
              <Navbar />
       <div id="my-content">
       <div className="header-body d-flex justify-content-center ">

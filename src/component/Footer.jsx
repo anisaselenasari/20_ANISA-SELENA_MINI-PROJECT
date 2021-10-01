@@ -1,15 +1,12 @@
 import { Badge } from '@material-ui/core';
-
 import {Facebook, Twitter, Instagram, YouTube} from '@material-ui/icons';
-
-
 import React from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
-    height : 130px;
+    height : 140px;
     background-color: #DCAB92;
-    //  padding : 80px 60px;
+     padding : 10px 60px;
 `;
 
 const Wrapper = styled.div`
@@ -28,6 +25,7 @@ const Column = styled.div`
     flex-direction : column;
     text-align: left;
     margin-left: 60px;
+    display: inline-flex;
 `
 
 const Left = styled.div`

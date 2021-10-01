@@ -20,6 +20,8 @@ function App() {
     <Route exact path="/" component={NavbarHome} />
     <Route exact path="/Collection" component={Collection} />
     <Route exact path="/Baju/:Collection" component={Baju} />
+    {/* baris 22 kenapa ada :collection . karna biar pas kita pencet collection , nah nanti nah nanti bisa munculin apa yg kita mau di
+    halaman baju. karna kita udh setting di halaman baju itu ditambah slice(/) id kategori, yang mau kita tunjukin */}
     <Route exact path="/DetailBaju" component={DetailBaju} />
     <Route exact path="/Login" component={Login} />
     <Route exact path="/" component={Footer} />

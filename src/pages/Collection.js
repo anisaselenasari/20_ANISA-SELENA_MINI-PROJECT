@@ -64,7 +64,7 @@ function Collection() {
                 <div className="col-md-3 ">  
                 <NavLink
                 exact
-                to="/Baju/tunik"
+                to="/Baju/2"
                 className="nav-link"
                 activeClassName="my-active"
                 aria-current="page"
@@ -81,7 +81,7 @@ function Collection() {
               <div className="col-md-3 ">  
               <NavLink
                 exact
-                to="/Baju"
+                to="/Baju/4"
                 className="nav-link"
                 activeClassName="my-active"
                 aria-current="page"
@@ -90,14 +90,14 @@ function Collection() {
               className="my-img2" 
               src={tops} 
               alt="profile-pic justify-content-center" />
-              <h6 style={{color: "black", textAlign: "center"}}>TOPS </h6>
+              <h6 style={{color: "black", textAlign: "center"}}>SHIRT </h6>
               </NavLink> 
               </div>
 
               <div className="col-md-3 ">   
               <NavLink
                 exact
-                to="/Baju"
+                to="/Baju/3"
                 className="nav-link"
                 activeClassName="my-active"
                 aria-current="page"
@@ -115,7 +115,7 @@ function Collection() {
               <NavLink
               
                 exact 
-                to="/Baju"
+                to="/Baju/1"
                 className="nav-link"
                 activeClassName="my-active"
                 aria-current="page"
