@@ -5,7 +5,7 @@ import baju1Img from '../assets/img/baju1.png'
 import baju2Img from '../assets/img/baju2.png'
 import '../assets/css/baju.css'
 import Footer from '../component/Footer'
-import { gql, useQuery} from '@apollo/client';
+import { gql, useQuery, useLazyQuery} from '@apollo/client';
 
 
 function Baju() {
@@ -24,22 +24,9 @@ function Baju() {
     }
   }  
   `
-  const GetShirt = gql`
-  query MyQuery {
-    Produk(where: {id_Kategori: {_eq: 1}}) {
-      deskripsi_Produk
-      gambar
-      harga
-      nama
-      id
-      id_Kategori
-    }
-  }
-  `
-  
-  // const GetShirtTunik = gql`
-  // query MyQueryCopy {
-  //   Produk(where: {id_Kategori: {_eq: 2}}) {
+  // const GetShirt = gql`
+  // query MyQuery {
+  //   Produk(where: {id_Kategori: {_eq: 1}}) {
   //     deskripsi_Produk
   //     gambar
   //     harga
@@ -50,8 +37,20 @@ function Baju() {
   // }
   // `
   
-  const { data, loading, error } = useQuery(GetShirt);
-  // const { data1, loading1, error1 } = useQuery(GetShirtTunik);
+  const GetTodoShirt = gql`
+  query MyQuery($id_Kategori: Int=1) {
+    Produk(where: {id_Kategori: {_eq: $id_Kategori}}) {
+      id_Kategori
+      id
+      gambar
+      harga
+      nama
+    }
+  }
+   `
+  
+  // const { data, loading, error } = useQuery(GetTodo);
+  const [getTodo, { data, loading, error }] = useLazyQuery(GetTodoShirt);
   console.log(data);
     return (
         <div>

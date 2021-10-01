@@ -23,6 +23,7 @@ function Home() {
           <div className="text-center">
           <img className="my-img" src={model} className="img-fluid"  className="rounded" alt="profile-pic justify-content-center"/>
             </div>
+            
               <div className="row" >
               <div className="col-md-6 ml-5" >   
               {/* baris ke 27 yg ada ml tuh buat ngasih jarak */}
