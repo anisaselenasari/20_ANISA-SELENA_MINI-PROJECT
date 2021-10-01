@@ -24,7 +24,34 @@ function Baju() {
     }
   }  
   `
-  const { data, loading, error } = useQuery(GetTodo);
+  const GetShirt = gql`
+  query MyQuery {
+    Produk(where: {id_Kategori: {_eq: 1}}) {
+      deskripsi_Produk
+      gambar
+      harga
+      nama
+      id
+      id_Kategori
+    }
+  }
+  `
+  
+  // const GetShirtTunik = gql`
+  // query MyQueryCopy {
+  //   Produk(where: {id_Kategori: {_eq: 2}}) {
+  //     deskripsi_Produk
+  //     gambar
+  //     harga
+  //     nama
+  //     id
+  //     id_Kategori
+  //   }
+  // }
+  // `
+  
+  const { data, loading, error } = useQuery(GetShirt);
+  // const { data1, loading1, error1 } = useQuery(GetShirtTunik);
   console.log(data);
     return (
         <div>
@@ -56,6 +83,10 @@ function Baju() {
               </div>
             ))}
             
+
+           
+
+
              {/* <div className="col-md-6 ml-5" >
              <NavLink
                 exact

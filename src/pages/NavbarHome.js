@@ -99,7 +99,9 @@ function NavbarHome() {
     return (
      
 
-        <nav className="navbar navbar-expand-lg navbar-light bg-light px-5 shadow-sm">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light background-color: #FFDAC1!important;
+      }px-5 shadow-sm"  >
+        {/* style={{background-color: "FFDAC1"}}> */}
       <div className="container-fluid">
         <NavLink className="navbar-brand" to="/">
         <img src={logo} alt="logo " />

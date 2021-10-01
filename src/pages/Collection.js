@@ -13,6 +13,7 @@ import Footer from '../component/Footer'
 
 
 function Collection() {
+  
 
     return (
         <div>
@@ -105,11 +106,13 @@ function Collection() {
                    alt="profile-pic justify-content-center" />
                    <h6 style={{color: "black", textAlign: "center"}}>OUTHER </h6>
                </NavLink> 
-
                </div>
+
+               {/* {(data.Produk)} */}
               <div className="col-md-3 ">   
               <NavLink
-                exact
+              
+                exact 
                 to="/Baju"
                 className="nav-link"
                 activeClassName="my-active"
@@ -122,6 +125,7 @@ function Collection() {
               <h6 style={{color: "black", textAlign: "center"}}>BUTTOMS </h6>
               </NavLink> 
               </div>
+             
               </div>
         </div>
         <Footer/>
