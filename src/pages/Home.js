@@ -7,6 +7,7 @@ import pengirimanImg from '../assets/img/return.png'
 import payImg from '../assets/img/pay.png'
 import mobilImg from '../assets/img/mobil.png'
 import garansiImg from '../assets/img/garansi.png'
+import { Height } from '@material-ui/icons'
 
 
 function Home() {
@@ -25,40 +26,55 @@ function Home() {
             </div>
             
               <div className="row" >
-              <div className="col-md-6 ml-5" >   
+              <div className="col-md-6 d-flex" >   
               {/* baris ke 27 yg ada ml tuh buat ngasih jarak */}
-              <img className="my-return" src={pengirimanImg} alt="profile-pic justify-content-center"/>
-              <p>
+              <img 
+              className="my-return" 
+              src={pengirimanImg} 
+              alt="profile-pic justify-content-center"/>
+              <h6>
               2 Days Return
               Salah pilih ukuran atau warna ? Tenang bisa
               return. Batas 2 hari setelah barang diterima
-              </p>
+              </h6>
               </div>
 
-             <div className="col-md-6 ml-5" >
-              <img className="my-pay" src={payImg} alt="profile-pic justify-content-center"/>
-              <p>
+             <div className="col-md-6 d-flex">
+              <img 
+              className="my-pay" 
+              src={payImg} 
+              alt="profile-pic justify-content-center"/>
+              <h6>
               Easy Payment Methods
               Transfer Bank, Tunai Alfamart, Ovo, Dana,
                 Shopeepay
-                  </p>
+                  </h6>
               </div>
               </div>
-
+              
+              <br></br>
+              <br></br>
               <div className="row">
-              <div className="col-md-6" >
-              <img className="my-garansi" src={garansiImg} alt="profile-pic justify-content-center"/>
-              <p>
+              <div className="col-md-6 d-flex">
+              <img 
+              className="my-garansi" 
+              src={garansiImg} 
+              alt="profile-pic justify-content-center"/>
+              <h6>
               Garansi
               Pesananmu defect atau tidak sesuai ? Tenang, kami akan ganti
-                  </p>
+                  </h6>
               </div>
-              <div className="col-md-6" >
-              <img className="my-mobil" src={mobilImg} alt="profile-pic justify-content-center"/>
-              <p>
+
+              <div className="col-md-6 d-flex">
+              <img 
+              className="my-mobil" 
+              src={mobilImg} 
+              alt="profile-pic justify-content-center"/>
+              <h6>
               Fast Shipping 
               Payment sebelum jam 3 sore, akan kami kirim di hari yang sama 
-                  </p>
+                  </h6>
               </div>
               </div>
             </div>

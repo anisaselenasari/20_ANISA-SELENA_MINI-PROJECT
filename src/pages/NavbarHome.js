@@ -99,8 +99,7 @@ function NavbarHome() {
     return (
      
 
-        <nav className="navbar navbar-expand-lg navbar-light bg-light background-color: #FFDAC1!important;
-      }px-5 shadow-sm"  >
+        <nav className="navbar navbar-expand-lg navbar-light"  style={{backgroundColor: "#FFDAC1"}}>
         {/* style={{background-color: "FFDAC1"}}> */}
       <div className="container-fluid">
         <NavLink className="navbar-brand" to="/">
@@ -150,7 +149,7 @@ function NavbarHome() {
                 LOGIN
               </NavLink>
             </li>
-            <Badge badgeContent = {1} color = "primary"> 
+            <Badge  color = "primary"> 
                <ShoppingCartOutlined/>
                     </Badge>
           </ul>

@@ -8,7 +8,8 @@ import Footer from '../component/Footer'
 import { gql, useQuery, useLazyQuery} from '@apollo/client';
 
 
-function Baju() {
+function Baju(props) {
+  console.log("ini props baju = ", props.match.params.collection);
 
   const GetTodo = gql`
   query MyQuery {
@@ -37,17 +38,17 @@ function Baju() {
   // }
   // `
   
-  const GetTodoShirt = gql`
-  query MyQuery($id_Kategori: Int!) {
-    Produk(where: {id_Kategori: {_eq: $id_Kategori}}) {
-      id_Kategori
-      id
-      gambar
-      harga
-      nama
-    }
-  }
-   `
+  // const GetTodoShirt = gql`
+  // query MyQuery($id_Kategori: Int!) {
+  //   Produk(where: {id_Kategori: {_eq: $id_Kategori}}) {
+  //     id_Kategori
+  //     id
+  //     gambar
+  //     harga
+  //     nama
+  //   }
+  // }
+  //  `
   
   const { data, loading, error } = useQuery(GetTodo);
   // const [getTodo, { data, loading, error }] = useLazyQuery(GetTodoShirt);

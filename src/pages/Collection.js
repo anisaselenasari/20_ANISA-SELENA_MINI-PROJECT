@@ -28,7 +28,7 @@ function Collection() {
           <br></br>
           <br></br>
         <div className="container"></div> 
-        <p style={{textAlign: "justify" }}>
+        <p style={{textAlign: "justify"}}>
         Your place to find perfect everyday shirt! Selling since 2009, we are totally trusted!!!
         <div className="container"></div>
             <br></br>
@@ -46,7 +46,9 @@ function Collection() {
               
 
             <div className="col-md-6">
+            <br></br>
             <img 
+            className="img-fluid" 
               className="my-gambar" 
               src={foto} 
               alt="profile-pic justify-content-center" 
@@ -62,7 +64,7 @@ function Collection() {
                 <div className="col-md-3 ">  
                 <NavLink
                 exact
-                to="/Baju"
+                to="/Baju/tunik"
                 className="nav-link"
                 activeClassName="my-active"
                 aria-current="page"

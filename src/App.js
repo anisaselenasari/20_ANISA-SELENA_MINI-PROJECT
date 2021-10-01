@@ -19,7 +19,7 @@ function App() {
     <Route exact path="/" component={Home} />
     <Route exact path="/" component={NavbarHome} />
     <Route exact path="/Collection" component={Collection} />
-    <Route exact path="/Baju" component={Baju} />
+    <Route exact path="/Baju/:Collection" component={Baju} />
     <Route exact path="/DetailBaju" component={DetailBaju} />
     <Route exact path="/Login" component={Login} />
     <Route exact path="/" component={Footer} />
