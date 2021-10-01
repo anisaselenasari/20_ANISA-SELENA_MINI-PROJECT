@@ -6,10 +6,12 @@ import baju2Img from '../assets/img/baju2.png'
 import '../assets/css/baju.css'
 import Footer from '../component/Footer'
 import { gql, useQuery, useLazyQuery} from '@apollo/client';
+import { useEffect } from 'react'
 
 
 function Baju(props) {
   console.log("ini props baju = ", props.match.params.collection);
+// baris 11 kita masukin props itu karna biar dia kepanggil atau muncul , ketika kita klik bagian collection.js baris ke 65. 
 
   const GetTodo = gql`
   query MyQuery {
@@ -25,18 +27,18 @@ function Baju(props) {
     }
   }  
   `
-  // const GetShirt = gql`
-  // query MyQuery {
-  //   Produk(where: {id_Kategori: {_eq: 1}}) {
-  //     deskripsi_Produk
-  //     gambar
-  //     harga
-  //     nama
-  //     id
-  //     id_Kategori
-  //   }
-  // }
-  // `
+  const GetShirt = gql`
+  query MyQueryCopy($id_Kategori: Int!) {
+    Produk(where: {id_Kategori: {_eq: $id_Kategori}}) {
+      deskripsi_Produk
+      gambar
+      harga
+      nama
+      id
+      id_Kategori
+    }
+  }
+   `
   
   // const GetTodoShirt = gql`
   // query MyQuery($id_Kategori: Int!) {
@@ -50,9 +52,15 @@ function Baju(props) {
   // }
   //  `
   
-  const { data, loading, error } = useQuery(GetTodo);
-  // const [getTodo, { data, loading, error }] = useLazyQuery(GetTodoShirt);
+  // const { data, loading, error } = useQuery(GetTodo);
+  const [getShirt, { data, loading, error }] = useLazyQuery(GetShirt);
   console.log(data);
+
+
+  useEffect (()=>{
+
+    getShirt({variables : {id_Kategori: props.match.params.collection}}
+  }, [])
 
   const clickImg = (elementImg) => {
     console.log("klikgambar")
