@@ -28,7 +28,7 @@ function Collection() {
           <br></br>
           <br></br>
         <div className="container"></div> 
-        <p>
+        <p style={{textAlign: "justify" }}>
         Your place to find perfect everyday shirt! Selling since 2009, we are totally trusted!!!
         <div className="container"></div>
             <br></br>

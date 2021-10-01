@@ -38,7 +38,7 @@ function Baju() {
   // `
   
   const GetTodoShirt = gql`
-  query MyQuery($id_Kategori: Int=1) {
+  query MyQuery($id_Kategori: Int!) {
     Produk(where: {id_Kategori: {_eq: $id_Kategori}}) {
       id_Kategori
       id
@@ -49,9 +49,16 @@ function Baju() {
   }
    `
   
-  // const { data, loading, error } = useQuery(GetTodo);
-  const [getTodo, { data, loading, error }] = useLazyQuery(GetTodoShirt);
+  const { data, loading, error } = useQuery(GetTodo);
+  // const [getTodo, { data, loading, error }] = useLazyQuery(GetTodoShirt);
   console.log(data);
+
+  const clickImg = (elementImg) => {
+    console.log("klikgambar")
+  }
+
+  
+  
     return (
         <div>
              <Navbar />
@@ -71,6 +78,7 @@ function Baju() {
               > 
               <img style={{width: "400px", height:"600.39px" , left: "46px", top: "186px" }}
               className="my-baju1" 
+              onClick={clickImg}
               src={elementProduk.gambar}  
               className="img-fluid"  
               // className="rounded float-start" 
