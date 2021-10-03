@@ -11,7 +11,7 @@ import LoadingSvg from '../component/LoadingSvg'
 
 
 function Baju(props) {
-  console.log("ini props baju = ", props.match.params.Collection);
+  console.log("ini props baju = ", props.match.params.id);
 // baris 13 kita masukin props itu karna biar dia kepanggil atau muncul , ketika kita klik bagian collection.js baris ke 65. 
 
   const GetTodo = gql`
@@ -40,6 +40,7 @@ function Baju(props) {
     }
   }
    `
+   
   
   // const GetTodoShirt = gql`
   // query MyQuery($id_Kategori: Int!) {
@@ -58,7 +59,6 @@ function Baju(props) {
   console.log(data);
 
   
-  console.log(data);
   useEffect (()=>{
     getShirt({variables : {id_Kategori: props.match.params.Collection}});
     console.log("saya masuk ke get shirt");
@@ -89,7 +89,7 @@ function Baju(props) {
               <div className="col-md-6 ml-5" >   
               <NavLink
                 exact
-                to="/DetailBaju"
+                to={"/DetailBaju/" + elementProduk.id}
                 className="nav-link"
                 activeClassName="my-active"
                 aria-current="page"
