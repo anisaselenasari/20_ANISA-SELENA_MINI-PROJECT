@@ -37,6 +37,7 @@ export default function Login() {
                     
                     <form className="data-container col-md-7 col-sm-8">
                     <div className="container"></div>
+                  
                     <h2 style={{textAlign: "center"}}>LOGIN TO CONTINUE</h2>
                     <br></br>
                     <br></br>
