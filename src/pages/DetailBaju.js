@@ -11,22 +11,36 @@ import { useEffect } from 'react'
 import LoadingSvg from '../component/LoadingSvg'
 
 export default function DetailBaju(props) {
-  const GetTodoShirt = gql`
+  const GetTodo = gql`
   query MyQuery {
     Produk {
-      nama
+      berat
+      deskripsi_Produk
       gambar
       harga
-      is_ready
-      deskripsi_Produk
       id
       id_Kategori
+      is_ready
+      material
+      nama
+      ukuran
       Date
     }
-  }  
+  }
+   
   `
+const GetTodoShirt = gql`
+query MyQuery {
+  Message {
+    id
+    message
+    username
+  }
+}
+`
+
   const GetDetailShirt = gql`
-   query MyQuery($id: Int!) {
+  query MyQuery($id: Int!) {
     Produk(where: {id: {_eq: $id}}) {
       deskripsi_Produk
       gambar
@@ -36,8 +50,12 @@ export default function DetailBaju(props) {
       id_Kategori
       id
       Date
+      material
+      ukuran
+      berat
     }
   }
+  
   `
   const DeleteMessage = gql`
   mutation MyMutation($id: Int!) {
@@ -49,11 +67,11 @@ export default function DetailBaju(props) {
   }
   `
   const UpdateMessage = gql `
-  mutation MyMutation($id: Int!, $message: String = "") {
-    update_Message_by_pk
-    (pk_columns: {id: $id},
-    _set: {message: $message}) {
+  mutation MyMutation2($id: Int!, $message: String = "") {
+    update_Message_by_pk(pk_columns: {id: $id}, _set: {message: $message}) {
       id
+      message
+      username
     }
   }
   `
@@ -61,9 +79,10 @@ export default function DetailBaju(props) {
   mutation MyMutation($object: Message_insert_input!) {
     insert_Message_one(object: $object) {
       id
+      message
+      username
     }
   }
-  
   `
   // const { data, loading, error } = useLazyQuery(GetDetailShirt);
    const [getDetailShirt, { data, loading, error }] = useLazyQuery(GetDetailShirt);
@@ -88,13 +107,13 @@ export default function DetailBaju(props) {
     return <LoadingSvg />
    }
 
-   const onSubmitList = (e) => {
-    e.preventDefault();
-    inserTodo({variables :{
-      object : {
-        message: message,
-        id: 1
-      }
+  //  const onSubmitList = (e) => {
+  //   e.preventDefault();
+  //   insertMessage({variables :{
+  //     object : {
+  //       message: message,
+  //       id: 1
+  //     }
 
       // const onDeleteItem = (idx) => {
       //   deleteMessage({variables :{
@@ -130,27 +149,18 @@ export default function DetailBaju(props) {
       <div className="container">
       <br></br>
       <br></br>
-      <p>{elementProduk.deskripsi_Produk} </p>
-      
-      {/* <p>
-      Arzena shirt merupakan jenis blouse yang casual look. Dengan detail cuttingan bagian leher turtle, 
-      lengan bercutting loose dan sedikit oversize pada bagian dada. </p>
-      
-      <p> Material : Crinkle Knit stretch </p>
-      
-     <p> Jenis kain tebal tapi tidak kaku, walaupun memiliki tekstur crinkle yang
-     timbul namun tetap halus dan lembut </p>
-     
-     <p>  Jenis kainnya jatuh dan adem saat dipakai</p> 
-     
-    <p>  Dengan jenis kain yang tidak mudah kusut sehingga lebih memudahkan dalam perawatan dan penyimpanannya </p>
-    
-    <p>Ukuran : All Size Fit to XL
-        dengan LD 122 cm
-        <br></br>
-        Berat : 350g
-    </p> */}
+      <h6>{elementProduk.nama} </h6>
+      <br></br>
+      <h6>{elementProduk.deskripsi_Produk} </h6>
+      <br></br>
+      <h6>{elementProduk.material}</h6>
+      <br></br>
+      <h6>{elementProduk.ukuran}</h6>
+      <br></br>
+      <h6>{elementProduk.berat}</h6>
+
       </div>
+     
       <NavLink
                 exact
                 to="/Login"
@@ -169,46 +179,44 @@ export default function DetailBaju(props) {
                     </button>
       </CardContent>
       </NavLink> 
+
+      
       <div className="review">
-      <form onSubmit={onSubmitList}>
+      {/* {data?.Message.map((elementMessage)=>( */}
+      <form 
+      // onSubmit={onSubmitList}
+      >
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Username</label>
+    <label 
+    for="exampleInputEmail1" 
+    className="form-label">Username</label>
     <input 
     type="text" 
     className="form-control" 
-    id="exampleInputEmail1"></input>
-    
+    id="exampleInputEmail1"></input>   
   </div>
   
   <div className="mb-3">
   <div className="form-floating">
-  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style={{height: "100px"}}></textarea>
-  <label for="floatingTextarea2">Pesan Untukku</label>
+  <textarea 
+  className="form-control" 
+  placeholder="Leave a comment here" 
+  id="floatingTextarea2" 
+  style={{height: "100px"}}></textarea>
+  <label 
+  for="floatingTextarea2"
+  className="form-label">Pesan Untukku</label>
 </div>
 </div>
   <button type="submit" style={{background: "#DCAB92"}} className="btn btn-primary">Submit</button>
 </form>
+
       </div>
+      
       </div>
         </div>
       ))}
-      {/* <div className="review">
-      <form>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Username</label>
-    <input type="email" class="form-control" id="exampleInputEmail1"></input>
-    
-  </div>
-  
-  <div class="mb-3">
-  <div class="form-floating">
-  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style={{height: "100px"}}></textarea>
-  <label for="floatingTextarea2">Pesan Untukku</label>
-</div>
-</div>
-  <button type="submit" style={{background: "#DCAB92"}} className="btn btn-primary">Submit</button>
-</form>
-      </div> */}
+     
       </div>
       </div>
       

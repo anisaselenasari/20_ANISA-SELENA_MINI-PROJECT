@@ -65,6 +65,7 @@ export default function Login() {
                      id="exampleInputPassword1"></input>
                    </div>
 
+
                    <div class="mb-3 form-check">
                      <input 
                      type="checkbox" 
@@ -76,7 +77,7 @@ export default function Login() {
                      for="exampleCheck1">Remember Me</label>
                      
                        </div>
-
+                      
                        <button 
                     //    onClick={submitHandler}
                        style={{width: "616px" , background: "#DBA88D"}} 
