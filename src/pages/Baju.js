@@ -58,6 +58,7 @@ function Baju(props) {
   console.log(data);
 
   
+  console.log(data);
   useEffect (()=>{
     getShirt({variables : {id_Kategori: props.match.params.Collection}});
     console.log("saya masuk ke get shirt");
