@@ -30,14 +30,24 @@ export default function DetailBaju(props) {
   }
    
   `
+// const GetMessage = gql`
+// query MyQuery {
+//   Message {
+//     id
+//     message
+//     username
+//   }
+// }
+// `
 const GetMessage = gql`
 query MyQuery {
-  Message {
-    id
+  Message(limit: 1, order_by: {id: desc}) {
     message
+    id
     username
   }
 }
+
 `
 
   const GetDetailShirt = gql`
@@ -85,6 +95,7 @@ query MyQuery {
     }
   }
   `
+
   const initialData = {    //ini buat message
     username: "",
     message: "" 
@@ -146,7 +157,6 @@ console.log("idx= detele item", idx.target.value )
   deleteMessage({variables: {
     id: idx.target.value
   }})
-  
 };
 
     return (
@@ -229,22 +239,25 @@ console.log("idx= detele item", idx.target.value )
   
   <div className="mb-3">
   <div className="form-group">
+  <label 
+  for="floatingTextarea2"
+  className="form-label">Pesan Untukku</label>
   <textarea 
   className="form-control" 
   onChange={handleInput} 
   name="message" 
   value={user.message} 
   rows="12"
-  placeholder="Leave a comment here" 
   id="floatingTextarea2" 
+  placeholder="Masukkan Pesan"
   style={{height: "100px"}}></textarea>
-  <label 
+  {/* <label 
   for="floatingTextarea2"
-  className="form-label">Pesan Untukku</label>
+  className="form-label">Pesan Untukku</label> */}
+</div>
+
 </div>
 <button type="submit" style={{background: "#DCAB92"}} className="btn btn-primary">Submit</button>
-</div>
- 
 </form>
       </div>   
       </div>
@@ -255,9 +268,13 @@ console.log("idx= detele item", idx.target.value )
                             <li className='komen-list card-kontent mb-4'>
                               
                                   <div className="">
-                                      <h5 className="card-titles ml-4 mt-3">{show.username}</h5>
-                                      <p style={{paddingRight: "15px", paddingLeft: "10px"}}className="card-text ml-4 mt-3">{show.message}</p>
-                                      <p onClick={onDeleteItem} className="del">Delete</p>
+                                      <h5 style={{paddingLeft: "20px"}} className="card-titles ml-4 mt-3">{show.username}</h5>
+                                      <p 
+                                      style={{paddingRight: "100px", paddingLeft: "55px"}}
+                                      className="card-text ml-4 mt-3">{show.message}</p>
+                                      <button 
+                                      type="submit" style={{background: "#FFDAC1"}} className="btn"
+                                      onClick={onDeleteItem} value={show.id} className="del">Delete</button>
                                   </div>
                           </li>
                           

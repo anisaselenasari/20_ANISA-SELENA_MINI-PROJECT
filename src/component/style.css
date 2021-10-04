@@ -1,24 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-.kontens {
-    font-family: 'Roboto', sans-serif;
-    position: absolute;
-   
-    left: 115px;
-    top: 410px;
-    
-   
 
-}
-.tittles{
-    font-style: normal;
-    font-weight:bolder;
-    font-size: 48px;
-    line-height: 56px;
-    text-align: center;
-    
-    color: #000000;
-}
-.review{
+
+/* .review{
     position: absolute;
 width: 824px;
 height: 557px;
@@ -27,31 +10,16 @@ top: 820px;
 
 background: rgba(255, 136, 0, 0.1);
 border-radius: 29px;
-}
+} */
 
-.formmessage {
+/* .formmessage {
     position: absolute;
     width: 90%;
     left: 40px;
     top: 40px;
-}
+} */
 
-.btn-custom2 { 
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    color:white !important;
-    width: 100px;
-    margin-top: 8px;
-    margin-left: 320px;
-    border-radius: 5px;
-    background-color: #FFBB33; 
-    border-color: #fd961f; 
-  } 
-.btn-custom2:hover {
-    
-  background-color: #f1b130; 
-  border-color: #ffa742; 
-}
+
 .komenbro{
     position: absolute;
     margin-top: 1px;
@@ -61,34 +29,36 @@ border-radius: 29px;
 
 .card-kontent {
 position: relative;
-width: 730px;
-height: 190px;
-left: 289px;
-top: 650px;
+width: 400px;
+height: 150px;
+left: 550px;
+/* top: 100px; */
+/* margin-top: 100px; */
+margin-bottom: 50px;
+
 
 background: whitesmoke;
-border-radius: 26px;
+border-radius: 7px;
 }
+
 .komen-list {
     list-style: none;
+    /* margin-left: 200px; */
    
   }
   .card-titles{
-      top: 100px;
+      top: 50px;
+      margin-right: 300px;
+      margin-top: 100px;
+      
   }
-.thanks {
-    margin-top: 1000px;
-    margin-bottom: 100px;
-    font-style: normal;
-    font-weight:bolder;
-    font-size: 48px;
-    line-height: 56px;
-    text-align: center;
-    
-    color: #000000;
-}
+
 .del {
     position: absolute;
-    margin-top: 10px;
-    margin-left: 640px;
+   
+    margin-left: 300px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    background-color: #FFDAC1;
+
 }
