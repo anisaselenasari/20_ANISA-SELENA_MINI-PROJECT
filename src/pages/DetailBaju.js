@@ -141,6 +141,7 @@ query MyQuery {
      setUser(initialData)
    };
 
+
    // untuk masukkan input
    const handleInput = (e) => {
      console.log("masuk handle input")
@@ -152,12 +153,20 @@ query MyQuery {
     });
 };
 
+// untuk delete pesan yang sudah kita tulis
 const onDeleteItem =  (idx) => {
 console.log("idx= detele item", idx.target.value )
   deleteMessage({variables: {
     id: idx.target.value
   }})
 };
+
+const onUpdateItem =  (idx) => {
+  console.log("idx= update item", idx.target.value )
+    updateMessage({variables: {
+      id: idx.target.value
+    }})
+  };
 
     return (
         <div>
@@ -275,6 +284,9 @@ console.log("idx= detele item", idx.target.value )
                                       <button 
                                       type="submit" style={{background: "#FFDAC1"}} className="btn"
                                       onClick={onDeleteItem} value={show.id} className="del">Delete</button>
+                                      <button 
+                                      type="submit" style={{background: "#FFDAC1"}} className="btn"
+                                      onClick={onUpdateItem} value={show.id} className="edit">Edit</button>
                                   </div>
                           </li>
                           
