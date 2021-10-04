@@ -7,8 +7,9 @@ import { Badge } from '@material-ui/core';
 import {  ShoppingCartOutlined } from '@material-ui/icons'
 import CardContent from "@material-ui/core/CardContent";
 import { gql, useQuery, useLazyQuery, useMutation} from '@apollo/client';
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import LoadingSvg from '../component/LoadingSvg'
+import '../component/style.css'
 
 export default function DetailBaju(props) {
   const GetTodo = gql`
@@ -29,7 +30,7 @@ export default function DetailBaju(props) {
   }
    
   `
-const GetTodoShirt = gql`
+const GetMessage = gql`
 query MyQuery {
   Message {
     id
@@ -84,17 +85,25 @@ query MyQuery {
     }
   }
   `
-  // const { data, loading, error } = useLazyQuery(GetDetailShirt);
-   const [getDetailShirt, { data, loading, error }] = useLazyQuery(GetDetailShirt);
+  const initialData = {    //ini buat message
+    username: "",
+    message: "" 
+   
+}
+ 
+  
+  const [getDetailShirt, { data, loading, error }] = useLazyQuery(GetDetailShirt);
   console.log("detail baju props", data);
 
+  const { data: dataMessage, loading:loadingMessage, error:errorMessage } = useQuery(GetMessage);
+  console.log("detail baju props", data);
+  const [user, setUser] = useState(initialData);
   const [updateMessage, { loading:loadingUpdate}] = useMutation(UpdateMessage);
-
   const [deleteMessage, {loading : loadingDelete}] = useMutation(DeleteMessage,{
-    refetchQueries: [GetTodoShirt]
+    refetchQueries: [GetMessage]
   });
   const [insertMessage, {loading:loadingInsert}] = useMutation(InsertMessage, {
-    refetchQueries: [GetTodoShirt]
+    refetchQueries: [GetMessage]
   })
  
 
@@ -107,19 +116,38 @@ query MyQuery {
     return <LoadingSvg />
    }
 
-  //  const onSubmitList = (e) => {
-  //   e.preventDefault();
-  //   insertMessage({variables :{
-  //     object : {
-  //       message: message,
-  //       id: 1
-  //     }
 
-      // const onDeleteItem = (idx) => {
-      //   deleteMessage({variables :{
-      //     id:idx
-      //   }})
-      // };
+   // untuk menjalankan pas submit
+   const onSubmitList = (e) => {
+     console.log("masuk submit")
+     e.preventDefault();
+     insertMessage({variables : {
+       object : {
+         username: user.username,
+        message: user.message
+      }
+     }});
+     setUser(initialData)
+   };
+
+   // untuk masukkan input
+   const handleInput = (e) => {
+     console.log("masuk handle input")
+    const name = e.target.name
+    const value = e.target.value;
+    setUser({
+      ...user,
+      [name]: value,
+    });
+};
+
+const onDeleteItem =  (idx) => {
+console.log("idx= detele item", idx.target.value )
+  deleteMessage({variables: {
+    id: idx.target.value
+  }})
+  
+};
 
     return (
         <div>
@@ -179,27 +207,34 @@ query MyQuery {
                     </button>
       </CardContent>
       </NavLink> 
-
+    
       
       <div className="review">
-      {/* {data?.Message.map((elementMessage)=>( */}
-      <form 
-      // onSubmit={onSubmitList}
-      >
-  <div class="mb-3">
+     
+      <form className="formmessage" onSubmit={onSubmitList}>
+  <div class="mb-3" className="form-group">
     <label 
-    for="exampleInputEmail1" 
+    for="username" 
     className="form-label">Username</label>
     <input 
     type="text" 
     className="form-control" 
-    id="exampleInputEmail1"></input>   
+    onChange={handleInput} 
+    id="nama" 
+    name="username" 
+    value={user.username}
+    placeholder="Masukkan Nama"
+    ></input>   
   </div>
   
   <div className="mb-3">
-  <div className="form-floating">
+  <div className="form-group">
   <textarea 
   className="form-control" 
+  onChange={handleInput} 
+  name="message" 
+  value={user.message} 
+  rows="12"
   placeholder="Leave a comment here" 
   id="floatingTextarea2" 
   style={{height: "100px"}}></textarea>
@@ -207,14 +242,27 @@ query MyQuery {
   for="floatingTextarea2"
   className="form-label">Pesan Untukku</label>
 </div>
+<button type="submit" style={{background: "#DCAB92"}} className="btn btn-primary">Submit</button>
 </div>
-  <button type="submit" style={{background: "#DCAB92"}} className="btn btn-primary">Submit</button>
+ 
 </form>
-      </div>    
+      </div>   
       </div>
         </div>
       ))}
       </div>
+      {dataMessage?.Message.map((show) => (
+                            <li className='komen-list card-kontent mb-4'>
+                              
+                                  <div className="">
+                                      <h5 className="card-titles ml-4 mt-3">{show.username}</h5>
+                                      <p style={{paddingRight: "15px", paddingLeft: "10px"}}className="card-text ml-4 mt-3">{show.message}</p>
+                                      <p onClick={onDeleteItem} className="del">Delete</p>
+                                  </div>
+                          </li>
+                          
+
+                        ))}
       </div>
     </div>
   </div>
