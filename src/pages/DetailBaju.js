@@ -210,20 +210,16 @@ query MyQuery {
 </div>
   <button type="submit" style={{background: "#DCAB92"}} className="btn btn-primary">Submit</button>
 </form>
-
-      </div>
-      
+      </div>    
       </div>
         </div>
       ))}
-     
       </div>
       </div>
-      
-        </div>
-        </div>
-        <Footer/>
-        </div>
+    </div>
+  </div>
+  <Footer/>
+</div>
     )
 }
 
