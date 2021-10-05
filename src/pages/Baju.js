@@ -12,8 +12,6 @@ import LoadingSvg from '../component/LoadingSvg'
 
 function Baju(props) {
   console.log("ini props baju = ", props.match.params.id);
-// baris 13 kita masukin props itu karna biar dia kepanggil atau muncul , ketika kita klik bagian collection.js baris ke 65. 
-
   const GetTodo = gql`
   query MyQuery {
     Produk {
@@ -41,18 +39,6 @@ function Baju(props) {
   }
    `
    
-  
-  // const GetTodoShirt = gql`
-  // query MyQuery($id_Kategori: Int!) {
-  //   Produk(where: {id_Kategori: {_eq: $id_Kategori}}) {
-  //     id_Kategori
-  //     id
-  //     gambar
-  //     harga
-  //     nama
-  //   }
-  // }
-  //  `
   
   // const { data, loading, error } = useQuery(GetTodo);
   const [getShirt, { data, loading, error }] = useLazyQuery(GetShirt);
@@ -99,7 +85,6 @@ function Baju(props) {
               onClick={clickImg}
               src={elementProduk.gambar}  
               className="img-fluid"  
-              // className="rounded float-start" 
               alt="profile-pic justify-content-center"/>
               <h5 style={{color: "black"}}>{elementProduk.nama}</h5>
               <h5 style={{color: "black"}}>{elementProduk.harga}</h5>

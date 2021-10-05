@@ -22,7 +22,12 @@ function Home() {
             
           </div>
           <div className="text-center">
-          <img className="my-img" src={model} className="img-fluid"  className="rounded" alt="profile-pic justify-content-center"/>
+          <img style={{paddingBottom: "80px"}}
+          className="my-img" 
+          src={model} 
+          className="img-fluid"  
+          className="rounded" 
+          alt="profile-pic justify-content-center"/>
             </div>
             
               <div className="row" >
@@ -32,7 +37,7 @@ function Home() {
               className="my-return" 
               src={pengirimanImg} 
               alt="profile-pic justify-content-center"/>
-              <h6>
+              <h6 style={{paddingLeft: "30px", }}>
               2 Days Return
               Salah pilih ukuran atau warna ? Tenang bisa
               return. Batas 2 hari setelah barang diterima
@@ -41,10 +46,11 @@ function Home() {
 
              <div className="col-md-6 d-flex">
               <img 
+             
               className="my-pay" 
               src={payImg} 
               alt="profile-pic justify-content-center"/>
-              <h6>
+              <h6 style={{paddingLeft: "30px", }}>
               Easy Payment Methods
               Transfer Bank, Tunai Alfamart, Ovo, Dana,
                 Shopeepay
@@ -60,7 +66,7 @@ function Home() {
               className="my-garansi" 
               src={garansiImg} 
               alt="profile-pic justify-content-center"/>
-              <h6>
+              <h6 style={{paddingLeft: "30px", }}>
               Garansi
               Pesananmu defect atau tidak sesuai ? Tenang, kami akan ganti
                   </h6>
@@ -71,7 +77,7 @@ function Home() {
               className="my-mobil" 
               src={mobilImg} 
               alt="profile-pic justify-content-center"/>
-              <h6>
+              <h6 style={{paddingLeft: "30px", }}>
               Fast Shipping 
               Payment sebelum jam 3 sore, akan kami kirim di hari yang sama 
                   </h6>

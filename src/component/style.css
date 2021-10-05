@@ -1,25 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 
-/* .review{
-    position: absolute;
-width: 824px;
-height: 557px;
-left: 240px;
-top: 820px;
-
-background: rgba(255, 136, 0, 0.1);
-border-radius: 29px;
-} */
-
-/* .formmessage {
-    position: absolute;
-    width: 90%;
-    left: 40px;
-    top: 40px;
-} */
-
-
 .komenbro{
     position: absolute;
     margin-top: 1px;
@@ -32,8 +13,6 @@ position: relative;
 width: 550px;
 height: 150px;
 left: 550px;
-/* top: 100px; */
-/* margin-top: 100px; */
 margin-bottom: 50px;
 
 
@@ -43,7 +22,6 @@ border-radius: 7px;
 
 .komen-list {
     list-style: none;
-    /* margin-left: 200px; */
    
   }
   .card-titles{

@@ -58,9 +58,8 @@ function Collection() {
             </div>
         </div>
 
+
               <div className="container row">
-               
-             
                 <div className="col-md-3 ">  
                 <NavLink
                 exact
@@ -110,7 +109,7 @@ function Collection() {
                </NavLink> 
                </div>
 
-               {/* {(data.Produk)} */}
+
               <div className="col-md-3 ">   
               <NavLink
               

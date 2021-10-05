@@ -12,6 +12,8 @@ import LoadingSvg from '../component/LoadingSvg'
 import '../component/style.css'
 
 export default function DetailBaju(props) {
+  console.log("ini props di detail baju=", props)
+  // const get todo untuk menampilkan semua yang telah kita buat di hasura
   const GetTodo = gql`
   query MyQuery {
     Produk {
@@ -27,29 +29,9 @@ export default function DetailBaju(props) {
       ukuran
       Date
     }
-  }
-   
-  `
-// const GetMessage = gql`
-// query MyQuery {
-//   Message {
-//     id
-//     message
-//     username
-//   }
-// }
-// `
-const GetMessage = gql`
-query MyQuery {
-  Message(limit: 1, order_by: {id: desc}) {
-    message
-    id
-    username
-  }
-}
+  }`
 
-`
-
+  // const getDetailshirt untuk menampilkan produk sesuai id yang sudah kita buat di arah hasura dan const ini berkaikatan dengan uselazyquery
   const GetDetailShirt = gql`
   query MyQuery($id: Int!) {
     Produk(where: {id: {_eq: $id}}) {
@@ -65,9 +47,20 @@ query MyQuery {
       ukuran
       berat
     }
-  }
-  
+  } 
   `
+  // const get message adalah untuk menampilkan message dengan 1 kali tampilan saja. jadi message yang akan masuk ke dalam
+  // database adalah message yang terakhir dibuat
+  const GetMessage = gql`
+query MyQuery {
+  Message(limit: 1, order_by: {id: desc}) {
+    message
+    id
+    username
+  }
+}
+`
+// const get message untuk mendelete message yang sudah kita buat
   const DeleteMessage = gql`
   mutation MyMutation($id: Int!) {
     delete_Message_by_pk(id: $id) {
@@ -77,6 +70,7 @@ query MyQuery {
     }
   }
   `
+  // const update message untuk mengedit message yang sudah kita buat
   const UpdateMessage = gql `
   mutation MyMutation2($id: Int!, $message: String = "") {
     update_Message_by_pk(pk_columns: {id: $id}, _set: {message: $message}) {
@@ -86,6 +80,7 @@ query MyQuery {
     }
   }
   `
+  // const insert message ini untuk memasukkan message yang kita inginkan
   const InsertMessage = gql`
   mutation MyMutation($object: Message_insert_input!) {
     insert_Message_one(object: $object) {
@@ -95,40 +90,64 @@ query MyQuery {
     }
   }
   `
-
-  const initialData = {    //ini buat message
+//ini buat message. const initial data disini adalah ketika kita memasukkan data, itu datanya masih kosong
+  const initialData = {    
     username: "",
-    message: "" 
-   
+    message: ""  
 }
  
-  
   const [getDetailShirt, { data, loading, error }] = useLazyQuery(GetDetailShirt);
+  // use lazy query akan bekerja kalau dia ke trigger sesuatu. karna di gql kita menulis (id interger!) berarti use lazyquery ini akan
+  // bekerja setiap ada id yang terpanggil. dan dia akan menampilkan data sesuai yang kita inginkan
+  // data disini adalah database yang sudah kita buat di hasura, lalu kita ambil disini
   console.log("detail baju props", data);
 
   const { data: dataMessage, loading:loadingMessage, error:errorMessage } = useQuery(GetMessage);
-  console.log("detail baju props", data);
+  // usequery itu berfungsi mengambil semua data yang kita buat di hasura tanpa harus spesifik datanya
+  console.log("data message", data);
+
+  // const setuser ini berfungsi untuk mengisi message atau merubah message. kita gunain use state. use state disini kan manggil initial data
+  // initial data yang udh kita buat di baris ke 93 sampai 95 itu kan masih kosong. ketika kita gunain use state, data kosong itu akan terganti 
+  // atau terisi dengan apa yang kita masukkan nanti
   const [user, setUser] = useState(initialData);
+
+  //const update message itu untuk mengedit message
   const [updateMessage, { loading:loadingUpdate}] = useMutation(UpdateMessage);
+
+  //const deletemessage itu untuk mengahpus pesan. di dalam nya terdapat {refetchQuery() adalah pemanggilan fungsi langsung.}
+  // jadi refetchqueries ini akan menampilkan get message setelah delete selesai melakukan mutasi
+  // tetapi karna kita disini hanya menampilkan message 1 kali, jadi ketika kita menjalankan delete, maka tampilannya akan tidak terlihat
   const [deleteMessage, {loading : loadingDelete}] = useMutation(DeleteMessage,{
     refetchQueries: [GetMessage]
   });
+
+  // const insertmessage itu untuk memasukkan pesan. di dalam nya terdapat {refetchQuery() adalah pemanggilan fungsi langsung.}
+  // jadi refetchqueries ini akan menampilkan get message yg ada di baris ke 53, stelah kita menulis pesan maka
+  // pesan yang akan tampil ialah hanya pesan yang terakhir. karna sudah kita setting hanya 1 kali keluaran saja 
   const [insertMessage, {loading:loadingInsert}] = useMutation(InsertMessage, {
     refetchQueries: [GetMessage]
   })
  
-
+// use effect ini dijalankan setelah masuk ke return. si return berjalan dlu. baru useeffect ini akan bekerja
+// disini kita memanggil const getDetailShirt yg ada di baris ke 98. 
+// karna sebelumnya kita hanya ingin menampilkan berdasarkan id. maka kita tulis id: props.match.params.id
+// id adalah pemanngilan id
+// props adalah objct yg kita panggil, nah di dalam props itu terdapat params dan match
   useEffect (()=>{
     getDetailShirt({variables : {id: props.match.params.id}});
     console.log("saya masuk ke get detail shirt");
   }, [])
 
+  // if loading untuk menampilkan animasi ketika loading
   if (loading || loadingUpdate || loadingDelete || loadingInsert){
     return <LoadingSvg />
    }
 
 
    // untuk menjalankan pas submit
+   // preventDefault() adalah sebuah method yang berfungsi untuk mencegah terjadinya event bawaan dari sebuah DOM, 
+   //misalnya tag "a href" jika kita klik, maka halaman browser akan melakukan reload, atau sebuah form jika kita klik tombol 
+   //submit maka akan melakukan reload pula.  disini juga terdapat object. berguna untuk menjalankan baris 112
    const onSubmitList = (e) => {
      console.log("masuk submit")
      e.preventDefault();
@@ -142,18 +161,17 @@ query MyQuery {
    };
 
 
-   // untuk masukkan input
+   // untuk masukkan input. disini kita akan spesifik untuk memasukkan input name dan value
    const handleInput = (e) => {
      console.log("masuk handle input")
     const name = e.target.name
     const value = e.target.value;
     setUser({
-      ...user,
       [name]: value,
     });
 };
 
-// untuk delete pesan yang sudah kita tulis
+// untuk delete pesan yang sudah kita tulis. mendelete id nya . jadi id tersebut akan terhapus semua
 const onDeleteItem =  (idx) => {
 console.log("idx= detele item", idx.target.value )
   deleteMessage({variables: {
@@ -274,6 +292,7 @@ const onUpdateItem =  (idx) => {
       ))}
       </div>
       {dataMessage?.Message.map((show) => (
+
                             <li className='komen-list card-kontent mb-4'>
                               
                                   <div className="">

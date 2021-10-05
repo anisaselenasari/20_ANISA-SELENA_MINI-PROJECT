@@ -2,27 +2,67 @@ import React from 'react'
 import modelloginImg from '../assets/img/modellogin.png'
 import "../assets/css/login.css"
 // import { useHistory } from 'react-router-dom'
+import { useState, useRef } from 'react'
+import form from '../component/form.css'
 
 export default function Login() {
 
-    // const history = useHistory() 
-    // function submitHandler(e) {    // disini adalah untuk submit, ketika dia sudah sesuai dia akan lanjut.nah tapi ketika dia 
-    //     e.preventDefault()           // gak sesuai dia akan munculin tulisan erornya
-    //     let isValid = true
-    
-    //     for (const field in Login) {
-    //       const input = Login[field]
-    
-    //       if (input.err || (input.required && !input.value)) {
-    //         isValid = false
-    //         break
-    //       }
-    //     }
+    const dataKosong ={
+        email: "",
+        password: "",
+        
+    }
+
+    const [data, setData] = useState(dataKosong)
+    const regexEmail =/^[a-zA-Z0-9](([a-zA-Z0-9]+\.)|([a-zA-Z0-9])*)[a-zA-Z0-9]+@([a-zA-Z]+\.)+([a-zA-Z]+)$/
+    const regexPassword =/^[a-zA-Z][a-zA-Z\s]{6,50}/
+    const [errMsg, setErrMsg] = useState("")
+
+
+    const handleInput = e => {
+        const name = e.target.name;
+        const value = e.target.value;
+
+        if (name === "email") {
+            if (regexEmail.test(value)) {
+                setErrMsg("")
+            } else {
+                setErrMsg("Email tidak valid. contoh: example@mail.com")
+
+            }
+        }
+
+        if (name === "password") {
+            if (regexPassword.test(value)) {
+                setErrMsg("")
+            } else {
+                setErrMsg("Password harus berupa huruf!!! minimal 6 huruf")
+
+            }
+        }
        
-       
-    // }
-    // !isValid && alert ('Form Tidak Valid!')
-    // isValid ? history.push('')
+        setData({
+            ...data,
+            [name]: value
+        })
+        console.log("data", data)
+    }
+
+    const handleSubmit = (event) => {
+        if (errMsg !== "") {
+            alert("Terdapat data yang tidak sesuai")
+        } else {
+            alert(`Data Berhasil Diterima`)
+        }
+        resetData()
+        event.preventDefault()
+    }
+    
+    const resetData = () => {
+        setData(dataKosong);
+        setErrMsg("")
+    }
+
 
     return (
         <div>
@@ -30,29 +70,38 @@ export default function Login() {
                 <div className="row">
                     <div className="col-md-5 col-sm-4">
                         <div className="left-image">
-                        <img className="my-modelLogin" src={modelloginImg} className="img-fluid" className="figure-img img-fluid rounded" alt="profile-pic justify-content-center"/>
+                        <img 
+                        className="my-modelLogin" 
+                        src={modelloginImg} 
+                        className="img-fluid" 
+                        className="figure-img img-fluid rounded" 
+                        alt="profile-pic justify-content-center"/>
                         </div>
                     </div>
                     
                     
-                    <form className="data-container col-md-7 col-sm-8">
+                    <form className="data-container col-md-7 col-sm-8" onSubmit={handleSubmit}>
                     <div className="container"></div>
                   
-                    <h2 style={{textAlign: "center"}}>LOGIN TO CONTINUE</h2>
-                    <br></br>
-                    <br></br>
-                    <br></br>
+                    <h2 style={{textAlign: "center", marginTop: "100px", paddingBottom: "85px"}}>LOGIN TO CONTINUE</h2>
                     <div className="container">
                     <div className="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">USERNAME</label>
-                     <input style={{width: "616px", background: "#C4C4C4" }} 
+                    <label 
+                    for="exampleInputEmail1" 
+                    class="form-label">USERNAME</label>
+                     <input 
+                     style={{width: "616px", background: "#C4C4C4" }} 
                      type="email" 
+                     name="email"
                      class="form-control" 
                      id="exampleInputEmail1" 
-                     aria-describedby="emailHelp">
-                     </input>
-                     
+                     aria-describedby="emailHelp"
+                     onChange={handleInput}
+                     value={data.email}>  
+                     </input>   
                     </div>
+
+
                     <div class="mb-3">
                      <label 
                      for="exampleInputPassword1" 
@@ -61,8 +110,11 @@ export default function Login() {
                      <input 
                      style={{width: "616px", background: "#C4C4C4" }} 
                      type="password" 
+                     name="password"
                      className="form-control" 
-                     id="exampleInputPassword1"></input>
+                     id="exampleInputPassword1"
+                     onChange={handleInput}
+                     value={data.password}></input>
                    </div>
 
 
@@ -77,11 +129,12 @@ export default function Login() {
                      for="exampleCheck1">Remember Me</label>
                      
                        </div>
-                      
+                       <span style={{color: "red"}}>{errMsg}</span> <br/>
                        <button 
-                    //    onClick={submitHandler}
                        style={{width: "616px" , background: "#DBA88D"}} 
+                       className={{errMsg}}
                        type="submit" 
+                       value="Submit"
                        className="btn">LOGIN</button>
                        </div>
                     </form>
