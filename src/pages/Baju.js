@@ -47,7 +47,7 @@ const [getShirt, { data, loading, error }] = useLazyQuery(GetShirt);
   
   useEffect (()=>{
     getShirt({variables : {id_Kategori: props.match.params.Collection}});
-    console.log("saya masuk ke get shirt");
+    console.log("saya masuk ke get shirt= ", props);
   }, [])
 
 const clickImg = (elementImg) => {
