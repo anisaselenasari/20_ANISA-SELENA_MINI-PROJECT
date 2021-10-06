@@ -6,23 +6,29 @@ import { useState, useRef } from 'react'
 import form from '../component/form.css'
 
 export default function Login() {
-
+// const dataKosong itu di setting gak ada tulisan apapun
     const dataKosong ={
         email: "",
         password: "",
         
     }
-
+// const [data, setData] = useState(dataKosong) disini kita menggunakan usestate karna nanti ketika kita set data . data kosong itu 
+// akan terganti menjadi data yan kita masukkan
     const [data, setData] = useState(dataKosong)
     const regexEmail =/^[a-zA-Z0-9](([a-zA-Z0-9]+\.)|([a-zA-Z0-9])*)[a-zA-Z0-9]+@([a-zA-Z]+\.)+([a-zA-Z]+)$/
     const regexPassword =/^[a-zA-Z][a-zA-Z\s]{6,50}/
+// const [errMsg, setErrMsg] = useState("") untuk mensetting error messagenya. kenapa disini use statenya kosong ?
+// agar nanti kita bisa seetting lagi eror yang mau kita tampilkan gimana aja
     const [errMsg, setErrMsg] = useState("")
 
 
     const handleInput = e => {
         const name = e.target.name;
         const value = e.target.value;
-
+// baris 29 artinya . jika name sama dengan email. disini kita sudah setting ketentuan email di const regex email
+//maka jika udah sesuai dengan yang kita mau dia tidak akan memumculkan apapun
+// tetapi jika name = email yang kita masukkan tidak sesuai dengan yang sudah ada di regexemail. maka dia akan memunculkan messageeror
+// begitu pun sama dengan name = password
         if (name === "email") {
             if (regexEmail.test(value)) {
                 setErrMsg("")
@@ -41,6 +47,7 @@ export default function Login() {
             }
         }
        
+        // set data berhubungan dengan baris ke 17 
         setData({
             ...data,
             [name]: value

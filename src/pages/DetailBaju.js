@@ -112,7 +112,7 @@ query MyQuery {
   const [user, setUser] = useState(initialData);
 
   //const update message itu untuk mengedit message
-  const [updateMessage, { loading:loadingUpdate}] = useMutation(UpdateMessage);
+  // const [updateMessage, { loading:loadingUpdate}] = useMutation(UpdateMessage);
 
   //const deletemessage itu untuk mengahpus pesan. di dalam nya terdapat {refetchQuery() adalah pemanggilan fungsi langsung.}
   // jadi refetchqueries ini akan menampilkan get message setelah delete selesai melakukan mutasi
@@ -139,7 +139,7 @@ query MyQuery {
   }, [])
 
   // if loading untuk menampilkan animasi ketika loading
-  if (loading || loadingUpdate || loadingDelete || loadingInsert){
+  if (loading || loadingDelete || loadingInsert){
     return <LoadingSvg />
    }
 
@@ -162,12 +162,15 @@ query MyQuery {
 
 
    // untuk masukkan input. disini kita akan spesifik untuk memasukkan input name dan value
+   // set user disini adalah untuk merubah isi value nya ini
+   // ...user ini fungsinya 
    const handleInput = (e) => {
      console.log("masuk handle input")
     const name = e.target.name
     const value = e.target.value;
     setUser({
-      [name]: value,
+      ...user,
+      [name]: value
     });
 };
 
@@ -179,12 +182,12 @@ console.log("idx= detele item", idx.target.value )
   }})
 };
 
-const onUpdateItem =  (idx) => {
-  console.log("idx= update item", idx.target.value )
-    updateMessage({variables: {
-      id: idx.target.value
-    }})
-  };
+// const onUpdateItem =  (idx) => {
+//   console.log("idx= update item", idx.target.value )
+//     updateMessage({variables: {
+//       id: idx.target.value
+//     }})
+//   };
 
     return (
         <div>
@@ -194,6 +197,12 @@ const onUpdateItem =  (idx) => {
       <div className="header-body d-flex justify-content-center ">
       <div className="container mt-1">
           <div className="row mb-5">
+
+  {/* di baris yg berisi {data?.Produk.map((elementProduk)=>( ini mksdnya adalah 
+    // data itu sebagai data yang kita punya di dalam hasura // tanda tanya disini berfungsi kek misal
+    // ini data apa yang bakal kita panggil gtu. dan yg kita panggil kan .Produk. maka nanti yang akan tampil adalah data dari Produk
+    //.Produk itu karna kita memanggil tabel Produk yg ada di hasura, dan yang sudah kita tulis di gql baris ke 17
+    // map ini map adalah fungsi untuk mentransformasi nilai dalam suatu array / object. */}
 
           {data?.Produk.map((elementProduk)=>(
         <div className="row">
@@ -278,9 +287,7 @@ const onUpdateItem =  (idx) => {
   id="floatingTextarea2" 
   placeholder="Masukkan Pesan"
   style={{height: "100px"}}></textarea>
-  {/* <label 
-  for="floatingTextarea2"
-  className="form-label">Pesan Untukku</label> */}
+ 
 </div>
 
 </div>
@@ -291,6 +298,12 @@ const onUpdateItem =  (idx) => {
         </div>
       ))}
       </div>
+ {/* di baris yg berisi {datamessage?.mesage.map((show)=>( ini mksdnya adalah 
+    // data itu sebagai data yang kita punya di dalam hasura // tanda tanya disini berfungsi kek misal
+    // ini data apa yang bakal kita panggil gtu. dan yg kita panggil kan .message. maka nanti yang akan tampil adalah data dari message
+    //.message itu karna kita memanggil tabel message yg ada di hasura, dan yang sudah kita tulis di gql baris ke 
+    // map ini map adalah fungsi untuk mentransformasi nilai dalam suatu array / object. */}
+
       {dataMessage?.Message.map((show) => (
 
                             <li className='komen-list card-kontent mb-4'>
@@ -303,9 +316,9 @@ const onUpdateItem =  (idx) => {
                                       <button 
                                       type="submit" style={{background: "#FFDAC1"}} className="btn"
                                       onClick={onDeleteItem} value={show.id} className="del">Delete</button>
-                                      <button 
+                                      {/* <button 
                                       type="submit" style={{background: "#FFDAC1"}} className="btn"
-                                      onClick={onUpdateItem} value={show.id} className="edit">Edit</button>
+                                      onClick={onUpdateItem} value={show.id} className="edit">Edit</button> */}
                                   </div>
                           </li>
                           
