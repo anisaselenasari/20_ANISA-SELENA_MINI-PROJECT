@@ -12,7 +12,6 @@ import LoadingSvg from '../component/LoadingSvg'
 
 function Baju(props) {
 console.log("ini props baju = ", props.match.params.id);
-
 const GetTodo = gql`
   query MyQuery {
     Produk {
@@ -39,28 +38,21 @@ const GetShirt = gql`
     }
   }
    `
-
-  // const { data, loading, error } = useQuery(GetTodo);
 const [getShirt, { data, loading, error }] = useLazyQuery(GetShirt);
   console.log(data);
-
-  
   useEffect (()=>{
     getShirt({variables : {id_Kategori: props.match.params.Collection}});
     console.log("saya masuk ke get shirt= ", props);
   }, [])
-
 const clickImg = (elementImg) => {
     console.log("klik gambar")
   };
   {
 console.log("sebelum masuk return")
   }
-
 if (loading){
     return <LoadingSvg />
    }
-
 return (
 <div>
   {console.log("masuk return")}
@@ -69,7 +61,6 @@ return (
   <div className="header-body d-flex justify-content-center ">
   <div className="text-center">
   <div className="row">
-
   {data?.Produk.map((elementProduk)=>(
   <div className="col-md-6 ml-5" >   
     <NavLink
@@ -88,7 +79,6 @@ return (
     alt="profile-pic justify-content-center"/>
     <h5 style={{color: "black"}}>{elementProduk.nama}</h5>
     <h5 style={{color: "black"}}>{elementProduk.harga}</h5>
-    <p>{elementProduk.Date}</p>
     </NavLink>
     </div>
     ))}

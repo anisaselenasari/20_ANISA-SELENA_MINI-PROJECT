@@ -133,12 +133,6 @@ export default function DetailBaju(props) {
     message: "",
   };
 
-  const [getDetailShirt, { data, loading, error }] =
-    useLazyQuery(GetDetailShirt);
-  // use lazy query akan bekerja kalau dia ke trigger sesuatu. karna di gql kita menulis (id interger!) berarti use lazyquery ini akan
-  // bekerja setiap ada id yang terpanggil. dan dia akan menampilkan data sesuai yang kita inginkan
-  // data disini adalah database yang sudah kita buat di hasura, lalu kita ambil disini
-  console.log("detail baju props", data);
 
   const {
     data: dataMessage,
@@ -186,16 +180,8 @@ export default function DetailBaju(props) {
   // karna sebelumnya kita hanya ingin menampilkan berdasarkan id. maka kita tulis id: props.match.params.id
   // id adalah pemanngilan id
   // props adalah objct yg kita panggil, nah di dalam props itu terdapat params dan match
-  useEffect(() => {
-    getDetailShirt({ variables: { id: props.match.params.id } });
-    console.log("saya masuk ke get detail shirt");
-  }, []);
 
-  // if loading untuk menampilkan animasi ketika loading
-  if (loading || loadingDelete || loadingInsert) {
-    return <LoadingSvg />;
-  }
-
+ 
   // untuk menjalankan pas submit
   // preventDefault() adalah sebuah method yang berfungsi untuk mencegah terjadinya event bawaan dari sebuah DOM,
   //misalnya tag "a href" jika kita klik, maka halaman browser akan melakukan reload, atau sebuah form jika kita klik tombol
@@ -240,6 +226,24 @@ export default function DetailBaju(props) {
       },
     });
   };
+  
+  const [getDetailShirt, { data, loading, error }] =
+  useLazyQuery(GetDetailShirt);
+// use lazy query akan bekerja kalau dia ke trigger sesuatu. karna di gql kita menulis (id interger!) berarti use lazyquery ini akan
+// bekerja setiap ada id yang terpanggil. dan dia akan menampilkan data sesuai yang kita inginkan
+// data disini adalah database yang sudah kita buat di hasura, lalu kita ambil disini
+console.log("detail baju props", data);
+
+  useEffect(() => {
+    getDetailShirt({ variables: { id: props.match.params.id } });
+    console.log("saya masuk ke get detail shirt");
+  }, []);
+
+  // if loading untuk menampilkan animasi ketika loading
+  if (loading || loadingDelete || loadingInsert) {
+    return <LoadingSvg />;
+  }
+
 
   return (
     <div>
